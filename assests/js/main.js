@@ -2,6 +2,27 @@
    script.js — Modern Etkileşimler
    ======================================== */
 
+// Hamburger Menü Kontrolü
+document.addEventListener('DOMContentLoaded', function() {
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.nav-links');
+  
+  if (hamburger && navLinks) {
+    hamburger.addEventListener('click', function() {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+    
+    // Menü öğesine tıklandığında menüyü kapat
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', function() {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+      });
+    });
+  }
+});
+
 /**
  * 3D Tilt (Eğilme) Efekti
  * Fare kartın üzerinde hareket ettiğinde kart hafifçe eğilir.

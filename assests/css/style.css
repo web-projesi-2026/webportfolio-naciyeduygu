@@ -92,6 +92,34 @@ nav {
   width: 100%;
 }
 
+/* Hamburger Menu */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 6px;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background-color: var(--text);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
 /* ══════════════════════════════
    HERO BÖLÜMÜ
    ══════════════════════════════ */
@@ -263,8 +291,93 @@ footer {
    RESPONSIVE
    ══════════════════════════════ */
 @media (max-width: 768px) {
-  nav { padding: 1rem 5%; }
-  .nav-links { display: none; } /* Mobil menü gerekirse buraya eklenebilir */
-  .grid-container { padding: 0 20px 60px; }
-  .hero { padding-top: 60px; }
+  nav { 
+    padding: 1rem 5%; 
+  }
+  
+  .nav-links { 
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.95);
+    gap: 0;
+    padding: 1rem 0;
+    box-shadow: 0 10px 30px var(--shadow);
+  }
+  
+  .nav-links.active {
+    display: flex;
+  }
+  
+  .nav-links a {
+    padding: 0.75rem 1.5rem;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .nav-links a::after {
+    display: none;
+  }
+  
+  .hamburger {
+    display: flex;
+  }
+  
+  .grid-container { 
+    padding: 0 20px 60px; 
+  }
+  
+  .hero { 
+    padding-top: 60px; 
+  }
+  
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  nav {
+    padding: 0.8rem 3%;
+  }
+  
+  .nav-logo {
+    font-size: 1.3rem;
+  }
+  
+  .hamburger span {
+    width: 20px;
+    height: 2.5px;
+  }
+  
+  .hero-welcome {
+    font-size: 1.8rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.3rem;
+  }
+  
+  .grid-container {
+    padding: 0 15px 40px;
+  }
+  
+  .card-img-wrapper {
+    height: 200px;
+  }
+  
+  .card-body {
+    padding: 20px;
+  }
+  
+  .card-title {
+    font-size: 1.1rem;
+  }
+  
+  .card-desc {
+    font-size: 0.85rem;
+  }
 }

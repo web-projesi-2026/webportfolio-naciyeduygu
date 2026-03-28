@@ -1,5 +1,5 @@
 /* =========================================
-   YUNUS BARIŞ — PORTFOLYO
+   NACİYE DUYGU — PORTFOLYO
    app.js (EN GÜNCEL - FORMSPREE POST UYUMLU)
    ========================================= */
 

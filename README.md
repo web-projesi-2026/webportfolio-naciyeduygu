@@ -32,7 +32,7 @@ Projeyi yerel makinenizde çalıştırmak için herhangi bir özel kurulum gerek
 git clone https://github.com/web-projesi-2026/web_portfolio_naciyeduygu.git
 
 2. Proje dizinine gidin:
-cd web_portfolio_Yunus
+cd web_portfolio_naciyeduygu
 
 3. Tarayıcıda açın:
 index.html

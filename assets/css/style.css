@@ -4,7 +4,7 @@
    ========================================= */
 
 :root {
-  --bg: #1a1a1a;   /* koyu gri */
+  --bg: #1a1a1a; /* koyu gri */
   --bg2: #111118;
   --surface: #16161f;
   --border: rgba(255,255,255,0.08);
@@ -34,19 +34,34 @@ body {
 
 /* ── CURSOR ── */
 .cursor {
-  width: 12px; height: 12px;
-  background: var(--accent);
+  width: 12px; 
+  height: 12px;
+  background: #ffffff; /* beyaz imleç */
   border-radius: 50%;
-  position: fixed; top: 0; left: 0;
+  position: fixed; 
+  top: 0; 
+  left: 0;
   pointer-events: none;
   z-index: 9999;
   transform: translate(-50%,-50%);
   transition: transform 0.1s, width 0.3s, height 0.3s, background 0.3s;
   mix-blend-mode: difference;
 }
+
 .cursor-trail {
-  width: 36px; height: 36px;
+  width: 36px; 
+  height: 36px;
   border: 1.5px solid rgba(255,255,255,0.5); /* beyaz halka */
+  border-radius: 50%;
+  position: fixed; 
+  top: 0; 
+  left: 0;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%,-50%);
+  transition: all 0.18s ease;
+}
+
 /* ── NAV ── */
 .nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -120,7 +135,7 @@ body {
   font-family: var(--font-display);
   font-size: clamp(3rem, 10vw, 7rem);
   font-weight: 900;
-  color: #0b1d3a;   /* koyu lacivert */
+  color: #0b1d3a; /* koyu lacivert */
 }
 .hero-name .italic { font-style: italic; -webkit-text-stroke: 1px var(--text); color: transparent; }
 

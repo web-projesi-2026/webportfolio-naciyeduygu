@@ -59,15 +59,15 @@ index.html
 
 ## ✨ Özellikler
 
-* Tam Duyarlı Tasarım
-* Özel İmleç
-* Animasyonlu Arka Plan
-* Hamburger Menü
-* Kaydırma Animasyonları (Scroll Reveal)
-* Sayıcı Animasyonları ("Tamamlanan Proje" ve "Uyku Sevgisi")
-* Çok Adımlı İletişim Formu
-* Proje Kartı Parlama Efekti
-* Aktif Sayfa Vurgusu (Navigasyon)
+* **Tam Duyarlı Tasarım:** Masaüstü, tablet ve mobil cihazlarda sorunsuz ve optimize edilmiş bir kullanıcı deneyimi sunar.
+* **Özel İmleç:** Web sitesine benzersiz ve etkileşimli bir dokunuş katan özel tasarlanmış fare imleci.
+* **Animasyonlu Arka Plan:** JavaScript ile oluşturulan dinamik parçacık efektleri sayesinde ana sayfada göz alıcı bir arka plan animasyonu.
+* **Hamburger Menü:** Mobil cihazlarda kolay ve sezgisel gezinme sağlayan, modern hamburger menü uygulaması.
+* **Kaydırma Animasyonları (Scroll Reveal):** Sayfa aşağı kaydırıldıkça içeriklerin zarif bir şekilde görünmesini sağlayan reveal-up animasyonları.
+* **Sayıcı Animasyonları:** "Tamamlanan Proje" ve "Kahve Tüketimi" gibi istatistiklerin animasyonlu bir şekilde artarak gösterilmesi.
+* **Çok Adımlı İletişim Formu:** Kullanıcıların kolayca ve adım adım mesaj göndermesini sağlayan interaktif bir iletişim formu.
+* **Proje Kartı Parlama Efekti:** Fare imleci proje kartlarının üzerine geldiğinde oluşan dinamik ve görsel olarak çekici parlama efekti.
+* **Aktif Sayfa Vurgusu (Navigasyon):** Gezinme çubuğundaki aktif sayfanın görsel olarak vurgulanması.
 
 ---
 

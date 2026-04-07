@@ -233,3 +233,52 @@ img{
   height:auto;
   display:block;
 }
+
+@media (max-width:768px){
+
+  .section-title{
+    font-size:2rem;
+  }
+
+  .hero-name{
+    font-size:3rem;
+  }
+
+  .about-stats{
+    flex-direction:column;
+    gap:20px;
+  }
+
+  .projects-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+@media (max-width:768px){
+
+  .section-title{
+    font-size:2rem;
+  }
+
+  .hero-name{
+    font-size:3rem;
+  }
+
+  .about-stats{
+    flex-direction:column;
+    gap:20px;
+  }
+
+  .projects-grid{
+    grid-template-columns:1fr;
+  }
+}
+@media (max-width:768px){
+  .nav{
+    padding:1rem;
+  }
+
+  .mobile-menu a{
+    font-size:1.5rem;
+  }
+}

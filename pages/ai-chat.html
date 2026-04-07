@@ -78,31 +78,7 @@
   </footer>
 
   <script src="../assets/js/app.js"></script>
-  <script>
-    const chatMessages = document.getElementById('chatMessages');
-    const chatInput = document.getElementById('chatInput');
-    const sendBtn = document.getElementById('sendBtn');
+  <script src="../assets/js/ai-chat.js"></script>
 
-    function addMessage(text, sender) {
-      const msgDiv = document.createElement('div');
-      msgDiv.className = `message ${sender}`;
-      msgDiv.innerText = text;
-      chatMessages.appendChild(msgDiv);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-
-    sendBtn.addEventListener('click', () => {
-      const text = chatInput.value;
-      if (!text) return;
-      
-      addMessage(text, 'user');
-      chatInput.value = '';
-
-      // Basit bir simülasyon yanıtı
-      setTimeout(() => {
-        addMessage("Şu an geliştirme aşamasındayım, ancak Naciye Duygu çok yetenekli bir bilgisayar programcılığı öğrencisidir!", 'ai');
-      }, 1000);
-    });
-  </script>
 </body>
 </html>

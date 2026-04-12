@@ -103,27 +103,34 @@
 
     <main class="container">
         <h1 class="section-title">Geri Dönüşleriniz</h1>
+        <div style="text-align:center;margin-bottom:25px;">
+    <p>📧 naciyeduygu@gmail.com</p>
+    <p>🐙 github.com/naciyeduygu</p>
+    <p>📍 Türkiye</p>
+</div>
         <div style="max-width: 600px; margin: 0 auto; background: var(--secondary-color); padding: 30px; border-radius: 10px; border: 1px solid var(--accent-color);">
-            <form id="contact-form" onsubmit="event.preventDefault(); document.getElementById('contact-form').style.display = 'none'; document.getElementById('feedback-msg').style.display = 'block';">
-                <div style="margin-bottom: 15px;">
-                    <label>Adınız:</label><br>
-                    <input type="text" style="width: 100%; padding: 10px; border-radius: 5px; border: none; margin-top: 5px;" required>
-                </div>
-                <div style="margin-bottom: 15px;">
-                    <label>E-posta:</label><br>
-                    <input type="email" style="width: 100%; padding: 10px; border-radius: 5px; border: none; margin-top: 5px;" required>
-                </div>
-                <div style="margin-bottom: 15px;">
-                    <label>Mesajınız:</label><br>
-                    <textarea rows="5" style="width: 100%; padding: 10px; border-radius: 5px; border: none; margin-top: 5px;" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%;">Gönder 🐾</button>
-            </form>
-            <div id="feedback-msg" style="margin-top: 20px; text-align: center; color: var(--accent-color); display: none;">
-                Mesajınız Çiçi'ye ulaştı! Teşekkür ederiz.
-            </div>
-        </div>
-    </main>
+            <form action="https://formsubmit.co/naciyeduygu@gmail.com" method="POST">
+    <div style="margin-bottom: 15px;">
+        <label>Adınız:</label><br>
+        <input type="text" name="name" style="width: 100%; padding: 10px; border-radius: 5px; border: none; margin-top: 5px;" required>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <label>E-posta:</label><br>
+        <input type="email" name="email" style="width: 100%; padding: 10px; border-radius: 5px; border: none; margin-top: 5px;" required>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <label>Mesajınız:</label><br>
+        <textarea name="message" rows="5" style="width: 100%; padding: 10px; border-radius: 5px; border: none; margin-top: 5px;" required></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary" style="width: 100%;">Gönder 🐾</button>
+
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_next" value="https://web-projesi-2026.github.io/webportfolio-naciyeduygu/">
+</form>
+              
 
     <footer style="text-align: center; padding: 2rem; background: #000; margin-top: 50px;">
         <p>&copy; 2026 Çiçi Kitap 🐾</p>

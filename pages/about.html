@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <div class="mama-banner">
+        <p>🐾 Her kitap siparişinin %25'i hayvanseverlerden sokak dostlarımıza mama ikramı olarak bağışlanmaktadır! 🐾 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 🐾 Her kitap siparişinin %25'i hayvanseverlerden sokak dostlarımıza mama ikramı olarak bağışlanmaktadır! 🐾</p>
+    </div>
     <div class="cat-bg" id="cat-bg"></div>
 
     <nav>
@@ -20,7 +23,13 @@
             <li><a href="about.html">Hakkımızda</a></li>
             <li><a href="gallery.html">Kitaplarımız</a></li>
             <li><a href="contact.html">Geri Dönüşleriniz</a></li>
+            <li><a href="compare.html">Fiyat Karşılaştır</a></li>
         </ul>
+        <div class="auth-buttons">
+            <button class="btn btn-secondary" onclick="toggleCart()">
+                <i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span>
+            </button>
+        </div>
         <div class="hamburger" id="hamburger">
             <span></span>
             <span></span>
@@ -28,12 +37,29 @@
         </div>
     </nav>
 
+    <!-- Sepet Modalı -->
+    <div id="cart-modal" class="cart-modal">
+        <div class="cart-modal-header">
+            <h3>Sepetim 🐾</h3>
+            <span class="close-cart" onclick="toggleCart()">&times;</span>
+        </div>
+        <div id="cart-items-list" class="cart-items-list">
+            <p style="text-align:center; color:#aaa;">Sepetiniz henüz boş.</p>
+        </div>
+        <div id="cart-footer" style="display:none;">
+            <div style="display:flex; justify-content:space-between; margin-bottom:15px; font-weight:bold;">
+                <span>Toplam:</span>
+                <span id="cart-total">0.00 TL</span>
+            </div>
+            <button class="btn btn-primary" style="width:100%;" onclick="completeOrder()">Siparişi Tamamla</button>
+        </div>
+    </div>
+
     <main class="container">
         <h1 class="section-title">Hakkımızda</h1>
         <div style="max-width: 800px; margin: 0 auto; background: var(--secondary-color); padding: 30px; border-radius: 10px; border: 1px solid var(--accent-color);">
             <p style="margin-bottom: 20px;">Çiçi Kitap, kitapların büyülü dünyasını kedi sevgisiyle harmanlayan butik bir sahaf dükkanıdır. İsmimiz, dükkanımızın asıl sahibi olan kedimiz Çiçi'den gelmektedir.</p>
-            <p style="margin-bottom: 20px;">Misyonumuz, eskiyen sayfaların kokusunu yeni nesillere taşımak ve her kitabın yeni bir ev bulmasına aracılık etmektir. Koleksiyonumuzda dünya klasiklerinden nadir eserlere kadar geniş bir yelpaze sunuyoruz.</p>
-            <p>Bize her zaman bir çay içmeye ve Çiçi'yi sevmeye bekleriz!</p>
+            <p style="margin-bottom: 20px;">Sadece kitap satmıyoruz, aynı zamanda her siparişinizle sokak hayvanlarına destek oluyoruz. Siparişlerinizin %25'i mama olarak dostlarımıza gidiyor.</p>
             <div style="text-align: center; margin-top: 30px;">
                 <i class="fas fa-cat fa-4x" style="color: var(--accent-color);"></i>
             </div>

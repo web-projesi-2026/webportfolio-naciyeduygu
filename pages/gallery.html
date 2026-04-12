@@ -9,14 +9,14 @@
 </head>
 <body>
     <div class="mama-banner">
-         <p>🐾 Her kitap siparişinin %25'i hayvanseverlerden sokak dostlarımıza mama ikramı olarak bağışlanmaktadır! 🐾 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 🐾 Her kitap siparişinin %25'i hayvanseverlerden sokak dostlarımıza mama ikramı olarak bağışlanmaktadır! 🐾</p>   
+        <p>🐾 Her kitap siparişinin %25'i hayvanseverlerden sokak dostlarımıza mama ikramı olarak bağışlanmaktadır! 🐾 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 🐾 Her kitap siparişinin %25'i hayvanseverlerden sokak dostlarımıza mama ikramı olarak bağışlanmaktadır! 🐾</p>
     </div>
 
     <div class="cat-bg" id="cat-bg"></div>
 
     <nav>
         <a href="../index.html" class="logo">
-            <img src="https://img.icons8.com/ios-filled/50/ffffff/cat.png" alt="Çiçi Kitap Logo">
+            <img src="../assets/logo-3d.png" alt="Çiçi Kitap 3D Logo">
             Çiçi Kitap
         </a>
         <ul class="nav-links" id="nav-links">
@@ -27,7 +27,12 @@
             <li><a href="compare.html">Fiyat Karşılaştır</a></li>
         </ul>
         <div class="auth-buttons">
-            <button class="btn btn-secondary" onclick="toggleCart()">
+            <button class="btn btn-secondary" onclick="toggleModal('tracking-modal')">
+                <i class="fas fa-truck"></i> Kargo Takip
+            </button>
+            <button class="btn btn-secondary" onclick="toggleModal('login-modal')">Giriş Yap</button>
+            <button class="btn btn-primary" onclick="toggleModal('register-modal')">Kayıt Ol</button>
+            <button class="btn btn-secondary" onclick="toggleModal('cart-modal')">
                 <i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span>
             </button>
         </div>
@@ -38,11 +43,52 @@
         </div>
     </nav>
 
+    <!-- Kargo Takip Modalı -->
+    <div id="tracking-modal" class="modal">
+        <div class="modal-header">
+            <h3>Kargo Sorgulama 🐾</h3>
+            <span class="modal-close" onclick="toggleModal('tracking-modal')">&times;</span>
+        </div>
+        <div class="auth-form">
+            <p style="margin-bottom: 15px; font-size: 0.9rem; color: #aaa;">Kargo durumunuzu öğrenmek için takip numaranızı girin.</p>
+            <input type="text" id="modal-tracking-input" placeholder="Kargo No: örn. 123456789">
+            <button onclick="trackOrderModal()">Sorgula</button>
+            <div id="modal-tracking-result" style="margin-top: 15px; font-weight: bold; text-align: center;"></div>
+        </div>
+    </div>
+
+    <!-- Giriş Modalı -->
+    <div id="login-modal" class="modal">
+        <div class="modal-header">
+            <h3>Giriş Yap 🐾</h3>
+            <span class="modal-close" onclick="toggleModal('login-modal')">&times;</span>
+        </div>
+        <form class="auth-form" onsubmit="event.preventDefault(); alert('Giriş başarılı! Hoş geldin 🐾'); toggleModal('login-modal');">
+            <input type="email" placeholder="E-posta" required>
+            <input type="password" placeholder="Şifre" required>
+            <button type="submit">Giriş Yap</button>
+        </form>
+    </div>
+
+    <!-- Kayıt Modalı -->
+    <div id="register-modal" class="modal">
+        <div class="modal-header">
+            <h3>Kayıt Ol 🐾</h3>
+            <span class="modal-close" onclick="toggleModal('register-modal')">&times;</span>
+        </div>
+        <form class="auth-form" onsubmit="event.preventDefault(); alert('Kayıt başarılı! Çiçi Kitap ailesine hoş geldin 🐾'); toggleModal('register-modal');">
+            <input type="text" placeholder="Ad Soyad" required>
+            <input type="email" placeholder="E-posta" required>
+            <input type="password" placeholder="Şifre" required>
+            <button type="submit">Kayıt Ol</button>
+        </form>
+    </div>
+
     <!-- Sepet Modalı -->
-    <div id="cart-modal" class="cart-modal">
-        <div class="cart-modal-header">
+    <div id="cart-modal" class="modal">
+        <div class="modal-header">
             <h3>Sepetim 🐾</h3>
-            <span class="close-cart" onclick="toggleCart()">&times;</span>
+            <span class="modal-close" onclick="toggleModal('cart-modal')">&times;</span>
         </div>
         <div id="cart-items-list" class="cart-items-list">
             <p style="text-align:center; color:#aaa;">Sepetiniz henüz boş.</p>

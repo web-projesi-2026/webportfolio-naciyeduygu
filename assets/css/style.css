@@ -1,229 +1,244 @@
-/* ═══ TEMEL AYARLAR ══════════════════════════════════════════════════ */
 :root {
-  --bg-dark: #0a0a0f;
-  --bg-card: #151520;
-  --accent-primary: #6366f1; /* Indigo */
-  --accent-secondary: #a855f7; /* Purple */
-  --text-main: #f8fafc;
-  --text-muted: #94a3b8;
-  --glass-bg: rgba(255, 255, 255, 0.05);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --font-main: 'JetBrains Mono', monospace;
-  --font-display: 'Playfair Display', serif;
+    --primary-color: #001f3f; /* Lacivert */
+    --secondary-color: #333333; /* Koyu Gri */
+    --accent-color: #aaaaaa; /* Açık Gri */
+    --text-color: #ffffff;
+    --bg-color: #001f3f;
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: url('https://img.icons8.com/ios-filled/32/ffffff/cat-footprint.png'), auto !important;
 }
 
 body {
-  background-color: var(--bg-dark);
-  color: var(--text-main);
-  font-family: var(--font-main);
-  line-height: 1.6;
-  overflow-x: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    overflow-x: hidden;
+    line-height: 1.6;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
-  transition: 0.3s ease;
+/* Arka Plandaki Kedi Animasyonları */
+.cat-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
 }
 
-ul {
-  list-style: none;
+.cat-bg i {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.1);
+    font-size: 24px;
+    animation: floatCat 20s linear infinite;
 }
 
-/* ═══ NAVİGASYON ═════════════════════════════════════════════════════ */
-.nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  padding: 1.5rem 5%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 1000;
-  background: rgba(10, 10, 15, 0.8);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--glass-border);
+@keyframes floatCat {
+    0% { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.5; }
+    90% { opacity: 0.5; }
+    100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
 }
 
-.nav-logo {
-  font-family: var(--font-display);
-  font-size: 1.8rem;
-  font-weight: 900;
-  letter-spacing: 2px;
+/* Navbar */
+nav {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 2px solid var(--accent-color);
 }
 
-.nav-logo .dot {
-  color: var(--accent-primary);
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+.logo img {
+    width: 40px;
+    height: 40px;
+    filter: invert(1);
 }
 
 .nav-links {
-  display: flex;
-  gap: 2rem;
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
 }
 
 .nav-links a:hover {
-  color: var(--accent-primary);
+    color: var(--accent-color);
 }
 
-/* ═══ BUTONLAR ═══════════════════════════════════════════════════════ */
-.btn-primary {
-  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-  color: white;
-  padding: 0.8rem 2rem;
-  border-radius: 50px;
-  font-weight: bold;
-  display: inline-block;
+/* Hamburger Menü */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
 }
 
-.btn-ghost {
-  border: 1px solid var(--accent-primary);
-  color: var(--accent-primary);
-  padding: 0.8rem 2rem;
-  border-radius: 50px;
-  display: inline-block;
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    transition: 0.3s;
 }
 
-.btn-ghost:hover {
-  background: var(--accent-primary);
-  color: white;
-}
-
-/* ═══ HERO BÖLÜMÜ ═══════════════════════════════════════════════════ */
+/* Hero Section */
 .hero {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 0 5%;
-  position: relative;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(rgba(0,31,63,0.7), rgba(0,31,63,0.7)), url('https://images.unsplash.com/photo-1512820790803-83ca734da794?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    background-position: center;
+    animation: fadeIn 2s ease-in;
 }
 
-#bgCanvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
-.hero-content h1 {
-  font-family: var(--font-display);
-  font-size: 4.5rem;
-  margin-bottom: 1rem;
-}
-
-.hero-subtext {
-  color: var(--text-muted);
-  font-size: 1.2rem;
-  max-width: 600px;
-  margin: 0 auto 2rem;
-}
-
-/* ═══ BÖLÜMLER (SECTIONS) ══════════════════════════════════════════ */
-.section {
-  padding: 100px 10%;
+/* Kitap Kartları */
+.container {
+    padding: 2rem 5%;
 }
 
 .section-title {
-  font-family: var(--font-display);
-  font-size: 2.5rem;
-  margin-bottom: 3rem;
-  text-align: center;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    color: var(--accent-color);
 }
 
-/* ═══ KARTLAR (CARDS) ══════════════════════════════════════════════ */
-.project-card, .exp-item {
-  background: var(--bg-card);
-  padding: 2rem;
-  border-radius: 20px;
-  border: 1px solid var(--glass-border);
-  transition: 0.3s ease;
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
 }
 
-.project-card:hover {
-  transform: translateY(-10px);
-  border-color: var(--accent-primary);
+.book-card {
+    background: var(--secondary-color);
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid #444;
 }
 
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+.book-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
 }
 
-/* ═══ İLETİŞİM FORMU ═══════════════════════════════════════════════ */
-#contactForm {
-  max-width: 600px;
-  margin: 0 auto;
+.book-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
 }
 
-input, textarea {
-  width: 100%;
-  padding: 1rem;
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  border-radius: 10px;
-  color: white;
-  margin-bottom: 1.5rem;
+/* Kargo Takip & Chatbot */
+.tracking-box {
+    background: var(--secondary-color);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    margin: 2rem auto;
+    border: 1px solid var(--accent-color);
+    text-align: center;
 }
 
-/* ═══ GALERİ ═══════════════════════════════════════════════════════ */
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1.5rem;
+.tracking-box input {
+    width: 70%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 10px;
 }
 
-.gallery-item {
-  height: 300px;
-  background: var(--bg-card);
-  border-radius: 15px;
-  overflow: hidden;
-  position: relative;
+.tracking-box button {
+    padding: 10px 20px;
+    background: var(--accent-color);
+    color: var(--primary-color);
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-.gallery-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* ═══ CHAT (AI) ════════════════════════════════════════════════════ */
-.chat-container {
-  height: 500px;
-  background: var(--bg-card);
-  border-radius: 20px;
-  display: flex;
-  flex-direction: column;
-  padding: 1.5rem;
-}
-
-.chat-messages {
-  flex: 1;
-  overflow-y: auto;
-  margin-bottom: 1rem;
-}
-
-.chat-input-area {
-  display: flex;
-  gap: 1rem;
-}
-
-/* ═══ FOOTER ═══════════════════════════════════════════════════════ */
-footer {
-  padding: 50px 10%;
-  text-align: center;
-  border-top: 1px solid var(--glass-border);
-}
-
-/* ═══ MOBİL UYUMLULUK ══════════════════════════════════════════════ */
+/* Mobil Uyumluluk */
 @media (max-width: 768px) {
-  .nav-links { display: none; }
-  .hero-content h1 { font-size: 2.5rem; }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(0,0,0,0.9);
+        padding: 20px;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+}
+
+/* Sepetim & Giriş */
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.btn {
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.btn-primary { background: var(--accent-color); color: var(--primary-color); }
+.btn-secondary { border: 1px solid var(--accent-color); color: white; }
+
+/* Kedi Animasyonu CSS */
+.cat-emoji {
+    font-size: 24px;
+    position: absolute;
+    user-select: none;
+    pointer-events: none;
 }

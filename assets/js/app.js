@@ -8,7 +8,7 @@ if (hamburger) {
     });
 }
 
-// Kedi Arka Plan Animasyonu Oluşturucu
+// Kedi Arka Plain Animasyonu Oluşturucu
 function createFloatingCats() {
     const catBg = document.getElementById('cat-bg');
     if (!catBg) return;
@@ -25,7 +25,106 @@ function createFloatingCats() {
         cat.style.zIndex = '-1';
         cat.style.pointerEvents = 'none';
         cat.style.userSelect = 'none';
+        cat.className = 'cat-emoji';
         catBg.appendChild(cat);
+    }
+}
+
+// Sepet Sistemi
+let cart = JSON.parse(localStorage.getItem('cici-cart')) || [];
+
+function toggleCart() {
+    const modal = document.getElementById('cart-modal');
+    if (modal) {
+        modal.classList.toggle('active');
+    }
+}
+
+// Herhangi bir yere tıklandığında sepeti kapat
+window.addEventListener('click', (e) => {
+    const modal = document.getElementById('cart-modal');
+    const cartBtn = document.querySelector('button[onclick="toggleCart()"]');
+    
+    if (modal && modal.classList.contains('active')) {
+        // Tıklanan yer modalın içi değilse ve açma butonu değilse kapat
+        if (!modal.contains(e.target) && e.target !== cartBtn && (!cartBtn || !cartBtn.contains(e.target))) {
+            modal.classList.remove('active');
+        }
+    }
+});
+
+function updateCartUI() {
+    const cartList = document.getElementById('cart-items-list');
+    const cartCount = document.getElementById('cart-count');
+    const cartFooter = document.getElementById('cart-footer');
+    const cartTotal = document.getElementById('cart-total');
+
+    if (!cartList) return;
+
+    if (cart.length === 0) {
+        cartList.innerHTML = '<p style="text-align:center; color:#aaa;">Sepetiniz henüz boş. 🐾</p>';
+        cartCount.innerText = "0";
+        cartFooter.style.display = 'none';
+    } else {
+        cartList.innerHTML = "";
+        let total = 0;
+        cart.forEach((item, index) => {
+            const priceNum = parseFloat(item.price.replace(' TL', ''));
+            total += priceNum;
+            cartList.innerHTML += `
+                <div class="cart-item">
+                    <div style="display:flex; align-items:center; gap:10px;">
+                        <img src="${item.img}" style="width:40px; height:60px; object-fit:cover; border-radius:3px;">
+                        <div>
+                            <div style="font-weight:bold; font-size:0.9rem;">${item.title}</div>
+                            <div style="font-size:0.8rem; color:#aaa;">${item.price}</div>
+                        </div>
+                    </div>
+                    <button onclick="removeFromCart(${index})" style="background:none; border:none; color:#ff4444; cursor:pointer;"><i class="fas fa-trash"></i></button>
+                </div>
+            `;
+        });
+        cartCount.innerText = cart.length;
+        cartTotal.innerText = total.toFixed(2) + " TL";
+        cartFooter.style.display = 'block';
+    }
+    localStorage.setItem('cici-cart', JSON.stringify(cart));
+}
+
+function addToCart(title, price, img) {
+    cart.push({ title, price, img });
+    updateCartUI();
+    // Sepeti otomatik aç
+    const modal = document.getElementById('cart-modal');
+    if (modal) modal.classList.add('active');
+}
+
+function removeFromCart(index) {
+    cart.splice(index, 1);
+    updateCartUI();
+}
+
+function completeOrder() {
+    if (cart.length === 0) return;
+    
+    // Sepeti temizle
+    cart = [];
+    updateCartUI();
+    
+    const modal = document.getElementById('cart-modal');
+    if (modal) modal.classList.remove('active');
+
+    // Teşekkür ekranını göster
+    const overlay = document.getElementById('thanks-overlay');
+    if (overlay) {
+        overlay.classList.add('active');
+    }
+}
+
+function closeThanks() {
+    const overlay = document.getElementById('thanks-overlay');
+    if (overlay) {
+        overlay.classList.remove('active');
     }
 }
 
@@ -45,20 +144,10 @@ function trackOrder() {
     }
 }
 
-// Sepet Sistemi
-let cartCount = 0;
-function addToCart() {
-    cartCount++;
-    const countSpan = document.getElementById('cart-count');
-    if (countSpan) {
-        countSpan.innerText = cartCount;
-    }
-    alert("Kitap sepete eklendi! 🐾");
-}
-
 // Sayfa Yüklendiğinde
 window.addEventListener('DOMContentLoaded', () => {
     createFloatingCats();
+    updateCartUI();
     
     // Öne Çıkan Kitaplar (index.html için)
     const featuredGrid = document.getElementById('featured-books');
@@ -80,7 +169,7 @@ window.addEventListener('DOMContentLoaded', () => {
                     <h3>${book.title}</h3>
                     <p style="color: #aaa; cursor: pointer; text-decoration: underline;" onclick="window.location.href='${authorUrl}'">${book.author}</p>
                     <p>${book.price}</p>
-                    <button class="btn btn-primary" onclick="addToCart()">Sepete Ekle</button>
+                    <button class="btn btn-primary" onclick="addToCart('${book.title}', '${book.price}', '${book.img}')">Sepete Ekle</button>
                 </div>
             `;
         });

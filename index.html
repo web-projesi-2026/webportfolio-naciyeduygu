@@ -1,275 +1,100 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
-  <meta name="description" content="Naciye Duygu — Bilgisayar Programcılığı Öğrencisi Portfolyo Sitesi">
-  <meta name="author" content="Naciye Duygu">
-  <meta name="theme-color" content="#0a0a0f">
-  <title>Naciye Duygu — Portfolyo</title>
-
-  <!-- CSS Yolu: assets/css/style.css -->
-  <link rel="stylesheet" href="assets/css/style.css">
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=JetBrains+Mono:wght@100..800&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Çiçi Kitap | Sahaf ve Kitap Alım Satım</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <!-- Kedi Animasyon Arka Planı -->
+    <div class="cat-bg" id="cat-bg"></div>
 
-<!-- ÖZEL İMLEÇ -->
-<div class="cursor" id="cursor"></div>
-<div class="cursor-trail" id="cursorTrail"></div>
-
-<!-- ═══ NAV ═══════════════════════════════════════════════════════ -->
-<nav class="nav" id="nav">
-  <div class="nav-logo">ND<span class="dot">.</span></div>
-
-  <!-- Masaüstü linkleri -->
-  <ul class="nav-links">
-    <li><a href="#about">Hakkımda</a></li>
-    <li><a href="#skills">Beceriler</a></li>
-    <li><a href="#experience">Deneyim</a></li>
-    <li><a href="#education">Eğitim</a></li>
-    <li><a href="#projects">Projeler</a></li>
-    <!-- Sayfa Yolları: pages/ klasörü içinde -->
-    <li><a href="pages/gallery.html">Galeri</a></li>
-    <li><a href="pages/ai-chat.html">Yapay Zekaya Sor</a></li>
-    <li><a href="#contact">İletişim</a></li>
-  </ul>
-
-  <!-- Hamburger (mobilde görünür) -->
-  <div class="hamburger" id="hamburger" aria-label="Menüyü aç/kapat" role="button" tabindex="0">
-    <span></span><span></span><span></span>
-  </div>
-</nav>
-
-<!-- MOBİL MENÜ -->
-<div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobil menü">
-  <ul>
-    <li><a href="#about"        class="mobile-link">Hakkımda</a></li>
-    <li><a href="#skills"       class="mobile-link">Beceriler</a></li>
-    <li><a href="#experience"   class="mobile-link">Deneyim</a></li>
-    <li><a href="#education"    class="mobile-link">Eğitim</a></li>
-    <li><a href="#projects"     class="mobile-link">Projeler</a></li>
-    <li><a href="pages/gallery.html"  class="mobile-link">Galeri</a></li>
-    <li><a href="pages/ai-chat.html"  class="mobile-link">Yapay Zekaya Sor</a></li>
-    <li><a href="#contact"      class="mobile-link">İletişim</a></li>
-  </ul>
-</div>
-
-<!-- ═══ HERO ══════════════════════════════════════════════════════ -->
-<section class="hero" id="hero">
-  <canvas id="bgCanvas"></canvas>
-  <div class="noise-overlay"></div>
-
-  <div class="hero-content reveal-up">
-    <div class="hero-tag">Bilgisayar Programcılığı Öğrencisi</div>
-
-    <h1 class="hero-name">
-      <span>Naciye</span>
-      <span class="italic">Duygu</span>
-    </h1>
-
-    <p class="hero-sub">
-      Her bir kod parçası geleceğime saçılan bir tutam ışık.
-    </p>
-
-    <div class="hero-cta">
-      <a href="#projects" class="btn-primary">Projeleri Gör</a>
-      <a href="pages/ai-chat.html" class="btn-ghost">Yapay Zekaya Sor ✦</a>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ HAKKIMDA ═══════════════════════════════════════════════════ -->
-<section class="section about-section" id="about">
-  <div class="section-inner reveal-up">
-    <h2 class="section-title">Merhaba, ben <em>Naciye Duygu</em></h2>
-    <p class="about-desc">
-      Bilgisayar programcılığı öğrencisiyim.<br>
-      Çevremdeki genel sorunları gözlemleyip bu sorunlar için fikir ve proje geliştirmeyi severim.<br>
-      Düşünmek, tasarlamak ve soyut-somut örneklerle gözlem yapmak en sevdiğim aktivitelerdir.
-    </p>
-
-    <div class="about-stats">
-      <div class="stat">
-        <span class="stat-num" data-target="0">0</span>
-        <span class="stat-label">Tamamlanan Proje</span>
-      </div>
-      <div class="stat">
-        <span class="stat-num" data-target="0">0</span>
-        <span class="stat-label">Uyku Sevgisi ❤️</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ BECERİLER ═════════════════════════════════════════════════ -->
-<section class="section skills-section" id="skills">
-  <div class="section-inner reveal-up">
-    <h2 class="section-title">Beceriler</h2>
-    <div class="skills-container">
-      <span class="skill-tag">HTML5</span>
-      <span class="skill-tag">CSS3 / Tailwind</span>
-      <span class="skill-tag">JavaScript</span>
-      <span class="skill-tag">PHP / MySQL</span>
-      <span class="skill-tag">C# / .NET</span>
-      <span class="skill-tag">Git / GitHub</span>
-      <span class="skill-tag">Responsive Tasarım</span>
-      <span class="skill-tag">UI / UX</span>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ DENEYİM ═══════════════════════════════════════════════════ -->
-<section class="section experience-section" id="experience">
-  <div class="section-inner reveal-up">
-    <h2 class="section-title">Deneyim</h2>
-    <div class="experience-list">
-      <div class="experience-item">
-        <h3>Stajyer Geliştirici</h3>
-        <p>Şirket/Okul Adı | 2025 — Günümüz</p>
-        <p>KAEÜ — Stajyer Geliştirici / Tasarlama | 2024 — Günümüz</p>
-        <p>Web projeleri üzerinde çalışma ve teknik destek sağlama.</p>
-        <p>Gerekli kurum ve kuruluşlar için afiş / poster tasarlamak.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ EĞİTİM ════════════════════════════════════════════════════ -->
-<section class="section education-section" id="education">
-  <div class="section-inner reveal-up">
-    <h2 class="section-title">Eğitim</h2>
-    <div class="education-list">
-      <div class="education-item">
-        <h3>Bilgisayar Programcılığı</h3>
-        <p>KAEÜ TBMYO | 2024 — 2026</p>
-        <p>Algoritmalar, Veri Yapıları ve Web Teknolojileri odaklı eğitim.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ PROJELER ══════════════════════════════════════════════════ -->
-<section class="section projects-section" id="projects">
-  <div class="section-inner">
-    <h2 class="section-title">Projelerim</h2>
-    <div class="projects-grid">
-
-      <div class="project-card reveal-up">
-        <div class="project-glow"></div>
-        <h3>E-Ticaret Sitesi</h3>
-        <p>Bilgisayar Donanım Parça Alım-Satım platformu. Modern bir alışveriş deneyimi.</p>
-        <p>Etkileşim içinde fikir beyan edilerek ürün kalite değerlendirme ve eksik giderilme sitesi.</p>
-        <div class="project-links">
-          <a href="#" class="project-link">GitHub</a>
-          <a href="#" class="project-link">Demo</a>
+    <nav>
+        <a href="index.html" class="logo">
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/cat.png" alt="Çiçi Kitap Logo">
+            Çiçi Kitap
+        </a>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="pages/about.html">Hakkımızda</a></li>
+            <li><a href="pages/gallery.html">Kitaplarımız</a></li>
+            <li><a href="pages/contact.html">Geri Dönüşleriniz</a></li>
+            <li><a href="#tracking">Kargo Takip</a></li>
+        </ul>
+        <div class="auth-buttons">
+            <a href="#" class="btn btn-secondary">Giriş Yap</a>
+            <a href="#" class="btn btn-primary">Kayıt Ol</a>
+            <a href="#" class="btn btn-secondary"><i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span></a>
+            <a href="#" class="btn btn-secondary"><i class="fas fa-search"></i> Görsel ile Ara</a>
         </div>
-      </div>
-
-      <div class="project-card reveal-up">
-        <div class="project-glow"></div>
-        <h3>Portfolyo Sitesi</h3>
-        <p>Kendi hakkımdaki her şeyi içeren online CV şablonu benzeri uygulama.</p>
-        <p>Kullanıcı ile etkileşime geçilebilen seçeneklerin sunulduğu çift taraflı fikir beyan sitesi.</p>
-        <div class="project-links">
-          <a href="https://github.com" class="project-link">GitHub</a>
-          <a href="pages/gallery.html" class="project-link">Galeri</a>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
-      </div>
+    </nav>
 
-      <div class="project-card reveal-up">
-        <div class="project-glow"></div>
-        <h3>Yapay Zeka Asistan</h3>
-        <p>Bu portfolyo sitesine entegre edilmiş AI sohbet özelliği.</p>
-        <p>Ziyaretçiler Naciye Duygu hakkında sorular sorabilir, anlık yanıt alabilir.</p>
-        <div class="project-links">
-          <a href="pages/ai-chat.html" class="project-link">Dene →</a>
-        </div>
-      </div>
+    <header class="hero">
+        <h1>Çiçi Kitap Dünyasına Hoş Geldiniz</h1>
+        <p>Eski kokulu sayfalar, yeni maceralar ve bir tutam kedi sevgisi...</p>
+        <a href="pages/gallery.html" class="btn btn-primary" style="margin-top: 20px; padding: 15px 30px;">Kitapları Keşfet</a>
+    </header>
 
-    </div>
-  </div>
-</section>
+    <main class="container">
+        <section id="categories">
+            <h2 class="section-title">Kategorilerimiz</h2>
+            <div class="book-grid">
+                <div class="book-card">
+                    <i class="fas fa-globe-americas fa-3x" style="margin-bottom: 15px; color: var(--accent-color);"></i>
+                    <h3>Dünya Klasikleri</h3>
+                    <p>Zamansız eserler...</p>
+                    <a href="pages/gallery.html?cat=dunya" class="btn btn-secondary">Göz At</a>
+                </div>
+                <div class="book-card">
+                    <i class="fas fa-landmark fa-3x" style="margin-bottom: 15px; color: var(--accent-color);"></i>
+                    <h3>Türk Klasikleri</h3>
+                    <p>Bizim hikayelerimiz...</p>
+                    <a href="pages/gallery.html?cat=turk" class="btn btn-secondary">Göz At</a>
+                </div>
+                <div class="book-card">
+                    <i class="fas fa-book-open fa-3x" style="margin-bottom: 15px; color: var(--accent-color);"></i>
+                    <h3>Roman</h3>
+                    <p>Derin hikayeler...</p>
+                    <a href="pages/gallery.html?cat=roman" class="btn btn-secondary">Göz At</a>
+                </div>
+                <div class="book-card">
+                    <i class="fas fa-feather-alt fa-3x" style="margin-bottom: 15px; color: var(--accent-color);"></i>
+                    <h3>Şiir</h3>
+                    <p>Ruhun gıdası...</p>
+                    <a href="pages/gallery.html?cat=siir" class="btn btn-secondary">Göz At</a>
+                </div>
+            </div>
+        </section>
 
-<!-- ═══ İLETİŞİM ══════════════════════════════════════════════════ -->
-<section class="section contact-section" id="contact">
-  <div class="section-inner reveal-up">
-    <h2 class="section-title">İletişim</h2>
+        <section id="tracking" class="tracking-box">
+            <h2>Kargo Takibi</h2>
+            <p>Kargo durumunuzu öğrenmek için takip numaranızı girin.</p>
+            <div style="margin-top: 15px;">
+                <input type="text" id="tracking-input" placeholder="Kargo No: örn. 123456789">
+                <button onclick="trackOrder()">Sorgula</button>
+            </div>
+            <div id="tracking-result" style="margin-top: 15px; font-weight: bold;"></div>
+        </section>
 
-    <div class="steps-bar">
-      <div class="step active" data-step="1">1</div>
-      <div class="step" data-step="2">2</div>
-      <div class="step" data-step="3">3</div>
-    </div>
+        <section id="featured">
+            <h2 class="section-title">Öne Çıkan Kitaplar</h2>
+            <div class="book-grid" id="featured-books">
+                <!-- JavaScript ile doldurulacak -->
+            </div>
+        </section>
+    </main>
 
-    <form id="contactForm" action="https://formspree.io/f/mgopoqqe" method="POST">
-      <!-- ADIM 1 -->
-      <div class="form-step active" data-step="1">
-        <div class="field-group">
-          <input type="text" name="name" id="name" placeholder="Adınız" required>
-        </div>
-        <div class="field-group">
-          <input type="email" name="email" id="email" placeholder="Email" required>
-        </div>
-        <button type="button" onclick="nextStep(1)" class="btn-primary">Sonraki</button>
-      </div>
+    <footer style="text-align: center; padding: 2rem; background: #000; border-top: 1px solid var(--accent-color);">
+        <p>&copy; 2026 Çiçi Kitap - Tüm Hakları Saklıdır. 🐾</p>
+    </footer>
 
-      <!-- ADIM 2 -->
-      <div class="form-step" data-step="2">
-        <div class="field-group">
-          <input type="hidden" name="topic" id="topic">
-          <div class="pills-container">
-            <div class="pill" data-topic="Web Tasarım">Web Tasarım</div>
-            <div class="pill" data-topic="Hakkımda">Hakkımda</div>
-            <div class="pill" data-topic="Diğer">Diğer</div>
-          </div>
-        </div>
-        <div class="field-group">
-          <textarea name="message" id="message" placeholder="Mesajınız" required></textarea>
-        </div>
-        <div class="btn-group">
-          <button type="button" onclick="prevStep(2)" class="btn-ghost">Geri</button>
-          <button type="button" onclick="nextStep(2)" class="btn-primary">Sonraki</button>
-        </div>
-      </div>
-
-      <!-- ADIM 3 (Özet) -->
-      <div class="form-step" data-step="3">
-        <div class="summary">
-          <p><strong>Ad:</strong> <span id="sumName"></span></p>
-          <p><strong>Email:</strong> <span id="sumEmail"></span></p>
-          <p><strong>Konu:</strong> <span id="sumTopic"></span></p>
-          <p><strong>Mesaj:</strong> <span id="sumMsg"></span></p>
-        </div>
-        <div class="btn-group">
-          <button type="button" onclick="prevStep(3)" class="btn-ghost">Geri</button>
-          <button type="submit" id="submitBtn" class="btn-primary">Gönder</button>
-        </div>
-      </div>
-    </form>
-
-    <div id="formSuccess">
-      <h3>Mesajınız İletildi ✓</h3>
-      <p>En kısa sürede dönüş yapacağım.</p>
-      <button onclick="resetForm()" class="btn-ghost" style="margin-top:1.5rem">Yeni Mesaj</button>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ FOOTER ════════════════════════════════════════════════════ -->
-<footer>
-  <nav class="footer-nav">
-    <a href="index.html">Ana Sayfa</a>
-    <a href="pages/gallery.html">Galeri</a>
-    <a href="pages/ai-chat.html">Yapay Zekaya Sor</a>
-    <a href="#contact">İletişim</a>
-  </nav>
-  <p>© 2025 <a href="#">Naciye Duygu</a> — Tüm hakları saklıdır.</p>
-</footer>
-
-<!-- JS Yolu: assets/js/app.js -->
-<script src="assets/js/app.js"></script>
+    <script src="assets/js/app.js"></script>
 </body>
 </html>

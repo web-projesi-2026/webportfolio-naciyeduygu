@@ -81,6 +81,15 @@ function addToCart(title, price, img) {
 // Sayfa Yüklendiğinde
 window.addEventListener('DOMContentLoaded', () => {
     updateCartUI();
+
+    // 👉 Fiyat karşılaştırmayı başlat
+    renderCompareTable(compareData);
+
+    const compareInput = document.getElementById("compare-search");
+    if (compareInput) {
+        compareInput.addEventListener("input", filterCompare);
+    }
+});
     
     // Tema butonu ikonunu ayarla
     const themeBtn = document.getElementById('theme-toggle-btn');
@@ -110,3 +119,47 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+// Fiyat karşılaştırma verisi
+const compareData = [
+    { book: "Suç ve Ceza", platform: "Çiçi Kitap", price: 65, status: "En Uygun" },
+    { book: "Suç ve Ceza", platform: "KitapYurdu", price: 72, status: "-" },
+    { book: "Suç ve Ceza", platform: "D&R", price: 80, status: "-" },
+
+    { book: "Kuyucaklı Yusuf", platform: "Çiçi Kitap", price: 45, status: "En Uygun" },
+    { book: "Kuyucaklı Yusuf", platform: "Trendyol", price: 52, status: "-" },
+    { book: "Kuyucaklı Yusuf", platform: "Amazon", price: 55, status: "-" }
+];
+
+function renderCompareTable(data) {
+    const tbody = document.getElementById("compare-body");
+    if (!tbody) return;
+
+    tbody.innerHTML = "";
+
+    data.forEach(item => {
+        tbody.innerHTML += `
+            <tr>
+                <td>${item.book}</td>
+                <td>${item.platform}</td>
+                <td>${item.price} TL</td>
+                <td style="color:${item.status === "En Uygun" ? "lime" : "#ccc"}">
+                    ${item.status}
+                </td>
+            </tr>
+        `;
+    });
+}
+
+// arama
+function filterCompare() {
+    const input = document.getElementById("compare-search");
+    if (!input) return;
+
+    const text = input.value.toLowerCase();
+
+    const filtered = compareData.filter(item =>
+        item.book.toLowerCase().includes(text)
+    );
+
+    renderCompareTable(filtered);
+}

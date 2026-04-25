@@ -39,18 +39,13 @@
                 <i class="fas fa-sun"></i>
             </button>
 
-            <button class="btn btn-secondary" onclick="toggleModal('tracking-modal')">
-                <i class="fas fa-truck"></i>
-            </button>
-
             <button class="btn btn-secondary" onclick="toggleModal('cart-modal')">
                 <i class="fas fa-shopping-cart"></i>
                 <span id="cart-count">0</span>
             </button>
 
-            <button class="btn btn-primary" onclick="toggleModal('login-modal')">
-                Giriş
-            </button>
+            <button class="btn btn-secondary" onclick="toggleModal('login-modal')">Giriş Yap</button>
+            <button class="btn btn-primary" onclick="toggleModal('register-modal')">Kayıt Ol</button>
         </div>
 
         <div class="hamburger" id="hamburger" onclick="toggleMenu()">
@@ -68,34 +63,33 @@
         </div>
 
         <div class="filter-area">
-            <input type="text" id="searchInput" placeholder="Kitap veya yazar ara...">
+            <input type="text" id="searchInput" placeholder="Kitap veya yazar ara..." oninput="searchBooks()">
 
-            <select id="categorySelect">
-                <option>Hepsi</option>
-                <option>Türk Klasikleri</option>
-                <option>Dünya Klasikleri</option>
-                <option>Roman</option>
-                <option>Şiir</option>
+            <select id="categorySelect" onchange="filterByCategory()">
+                <option value="all">Hepsi</option>
+                <option value="turk">Türk Klasikleri</option>
+                <option value="dunya">Dünya Klasikleri</option>
+                <option value="roman">Roman</option>
+                <option value="siir">Şiir</option>
             </select>
         </div>
 
-        <div class="book-grid" id="book-list">
-            <!-- Kitaplar app.js ile gelecek -->
+        <div class="book-grid" id="gallery-grid">
+            <!-- Kitaplar gallery.js ile gelecek -->
         </div>
 
     </main>
 
+    <!-- MODALS -->
     <div id="login-modal" class="modal">
         <div class="modal-header">
             <h3>Giriş Yap 🐾</h3>
             <span class="modal-close" onclick="toggleModal('login-modal')">&times;</span>
         </div>
-
-        <form class="auth-form" onsubmit="event.preventDefault(); loginDemo();">
-            <input type="email" id="login-email" placeholder="E-posta adresiniz" required>
+        <form class="auth-form" onsubmit="event.preventDefault(); alert('Giriş başarılı! 🐾'); toggleModal('login-modal');">
+            <input type="email" placeholder="E-posta adresiniz" required>
             <input type="password" placeholder="Şifreniz" required>
-
-            <button type="submit">Giriş Yap</button>
+            <button type="submit" class="btn btn-primary full-btn">Giriş Yap</button>
         </form>
     </div>
 
@@ -104,31 +98,12 @@
             <h3>Kayıt Ol 🐾</h3>
             <span class="modal-close" onclick="toggleModal('register-modal')">&times;</span>
         </div>
-
-        <form class="auth-form" onsubmit="event.preventDefault(); registerDemo();">
+        <form class="auth-form" onsubmit="event.preventDefault(); alert('Kayıt başarılı! 🐾'); toggleModal('register-modal');">
             <input type="text" placeholder="Ad Soyad" required>
             <input type="email" placeholder="E-posta" required>
             <input type="password" placeholder="Şifre" required>
-
-            <button type="submit">Kayıt Ol</button>
+            <button type="submit" class="btn btn-primary full-btn">Kayıt Ol</button>
         </form>
-    </div>
-
-    <div id="tracking-modal" class="modal">
-        <div class="modal-header">
-            <h3>Kargo Takip 🐾</h3>
-            <span class="modal-close" onclick="toggleModal('tracking-modal')">&times;</span>
-        </div>
-
-        <div class="auth-form">
-            <p>Deneme kodu: <strong>CICI2026</strong></p>
-
-            <input type="text" id="modal-tracking-input" placeholder="Kargo takip numarası">
-
-            <button onclick="trackOrderModal()">Sorgula</button>
-
-            <div id="modal-tracking-result" class="form-message"></div>
-        </div>
     </div>
 
     <div id="cart-modal" class="modal">
@@ -136,30 +111,10 @@
             <h3>Sepetim 🐾</h3>
             <span class="modal-close" onclick="toggleModal('cart-modal')">&times;</span>
         </div>
-
         <div id="cart-items-list" class="cart-items-list"></div>
-
-        <div id="cart-footer">
+        <div class="cart-total-box">
             <strong>Toplam:</strong>
             <span id="cart-total">0 TL</span>
-        </div>
-
-        <button class="btn btn-primary full-btn" style="margin-top:14px" onclick="completeOrder()">
-            Siparişi Tamamla
-        </button>
-    </div>
-
-    <div id="thanks-overlay" class="thanks-overlay">
-        <div>
-            <div class="waving-cat">👋🐱</div>
-
-            <h2>Siparişiniz İçin Teşekkür Ederiz!</h2>
-
-            <p>Çiçi ve sokak dostları adına teşekkürler.</p>
-
-            <button class="btn btn-primary" style="margin-top:24px" onclick="closeThanks()">
-                Kapat
-            </button>
         </div>
     </div>
 
@@ -176,5 +131,20 @@
     </footer>
 
     <script src="../assets/js/app.js"></script>
+    <script src="../assets/js/gallery.js"></script>
+    <script>
+        function searchBooks() {
+            const term = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = allBooks.filter(b => 
+                b.title.toLowerCase().includes(term) || 
+                b.author.toLowerCase().includes(term)
+            );
+            displayBooks(filtered);
+        }
+        function filterByCategory() {
+            const cat = document.getElementById('categorySelect').value;
+            filterBooks(cat);
+        }
+    </script>
 </body>
 </html>

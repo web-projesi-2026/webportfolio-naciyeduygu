@@ -251,3 +251,57 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+const bookList = document.getElementById("book-list");
+
+let sepet = JSON.parse(localStorage.getItem("sepet")) || [];
+let favoriler = JSON.parse(localStorage.getItem("favoriler")) || [];
+
+fetch("assets/data/books.json")
+    .then(response => response.json())
+    .then(books => {
+        books.forEach(book => {
+            const card = document.createElement("div");
+            card.className = "book-card";
+
+            card.innerHTML = `
+                <img src="${book.resim}" alt="${book.ad}">
+                <h3>${book.ad}</h3>
+                <p><strong>Yazar:</strong> ${book.yazar}</p>
+                <p><strong>Kategori:</strong> ${book.kategori}</p>
+                <p class="price">${book.fiyat} TL</p>
+
+                <button onclick="sepeteEkle(${book.id}, '${book.ad}', ${book.fiyat})">
+                    Sepete Ekle
+                </button>
+
+                <button onclick="favoriyeEkle(${book.id}, '${book.ad}')">
+                    Favorilere Ekle
+                </button>
+            `;
+
+            bookList.appendChild(card);
+        });
+    });
+
+function sepeteEkle(id, ad, fiyat) {
+    const urun = { id, ad, fiyat };
+
+    sepet.push(urun);
+    localStorage.setItem("sepet", JSON.stringify(sepet));
+
+    alert(ad + " sepete eklendi.");
+}
+
+function favoriyeEkle(id, ad) {
+    const mevcutMu = favoriler.some(item => item.id === id);
+
+    if (mevcutMu) {
+        alert("Bu kitap zaten favorilerde.");
+        return;
+    }
+
+    favoriler.push({ id, ad });
+    localStorage.setItem("favoriler", JSON.stringify(favoriler));
+
+    alert(ad + " favorilere eklendi.");
+}
